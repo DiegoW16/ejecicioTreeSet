@@ -1,0 +1,64 @@
+import java.util.TreeSet;
+
+
+public class Prueba_Treeset1 {
+
+    public static void main(String[] args) {
+       
+        //Instancias creadas
+       Articulo primero = new Articulo(1, "Articulo primero");
+       
+       Articulo segundo = new Articulo(2, "Articulo segundo");
+       
+       Articulo tercero = new Articulo(3, "Articulo tercero");
+       
+       /* se almacenan los objetos de tipo Articulo
+       dentro de un TreeSet
+       */
+       TreeSet <Articulo> ordenaArticulos = new TreeSet<Articulo>();
+       
+       /*Elementos agregados a esta coleccion 
+       el orden de ellos principalmente es en base a los numeros
+       */
+       
+       ordenaArticulos.add(tercero);
+       
+       ordenaArticulos.add(primero);
+       
+       ordenaArticulos.add(segundo);
+       
+       for (Articulo art: ordenaArticulos){
+           System.out.println(art.getDescripcion());
+       }
+    }
+}
+/* el compareTo se le agrega al objeto Articulo
+al estar dentro de TreeSet tendrá un orden por defecto
+*/
+class Articulo implements Comparable<Articulo> {
+    
+    public Articulo(int num, String desc){
+    
+        num_articulo = num;
+        
+        descripcion = desc;
+     }
+    /* se le indica al metodo que compare el numero de un articulo
+    con otro
+    */
+    @Override
+    public int compareTo(Articulo o) {
+        return num_articulo - o.num_articulo; 
+    }
+    /* se crea este metodo para que me devuelva la descripcion
+    del articulo
+    */
+    public String getDescripcion(){
+        return descripcion;
+        
+    }
+     
+    private int num_articulo;
+    
+    private String descripcion;
+}
